@@ -2862,12 +2862,22 @@ namespace SDL2
         //
         // SDL_vulkan.h
         //
+        public struct VkInstance
+        {
+            public IntPtr Handle;
+        }
+
+        public struct VkSurfaceKHR
+        {
+            public ulong Handle;
+        }
+
         [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_LoadLibrary")]
         public static extern int VulkanLoadLibrary(byte* path);        [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_GetVkGetInstanceProcAddr")]
         public static extern IntPtr VulkanGetVkGetInstanceProcAddr();        [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_UnloadLibrary")]
         public static extern void VulkanUnloadLibrary();        [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_GetInstanceExtensions")]
         public static extern bool VulkanGetInstanceExtensions(Window window, ref uint count, byte** names);        [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_CreateSurface")]
-        public static extern bool VulkanCreateSurface(Window window, Vulkan.Vk.Instance instance, out Vulkan.Vk.Surface surface);        [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_GetDrawableSize")]
+        public static extern bool VulkanCreateSurface(Window window, VkInstance instance, out VkSurfaceKHR surface);        [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_GetDrawableSize")]
         public static extern void VulkanGetDrawableSize(Window window, out int w, out int h);
     }
 }
