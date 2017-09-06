@@ -122,7 +122,7 @@ namespace SDL2
                 return (uint)((1 << 28) | ((byte)type << 24) | ((byte)order << 20) | ((byte)layout << 16) | (bits << 8) | bytes);
             }
         }
-
+        
         //
         // SDL.h
         //
@@ -259,7 +259,7 @@ namespace SDL2
 
         public static AudioSpec* LoadWav(byte* file, out AudioSpec spec, out byte* audioBuffer, out uint audioLength)
         {
-            byte* rb = Utf8.FromString("rb");
+            byte* rb = Utf8.AllocateFromString("rb");
             AudioSpec* result = LoadWavRW(RWFromFile(file, rb), 1, out spec, out audioBuffer, out audioLength);
             Utf8.Free(rb);
             return result;
@@ -878,7 +878,7 @@ namespace SDL2
 
         public static int GameControllerAddMappingsFromFile(byte* file)
         {
-            byte* rb = Utf8.FromString("rb");
+            byte* rb = Utf8.AllocateFromString("rb");
             int result = GameControllerAddMappingsFromRW(RWFromFile(file, rb), 1);
             Utf8.Free(rb);
             return result;
@@ -2428,7 +2428,7 @@ namespace SDL2
 
         public static Surface* LoadBmp(byte* file)
         {
-            byte* rb = Utf8.FromString("rb");
+            byte* rb = Utf8.AllocateFromString("rb");
             Surface* result = LoadBmpRW(RWFromFile(file, rb), 1);
             Utf8.Free(rb);
             return result;
@@ -2439,7 +2439,7 @@ namespace SDL2
 
         public static int SaveBmp(Surface* surface, byte* file)
         {
-            byte* wb = Utf8.FromString("wb");
+            byte* wb = Utf8.AllocateFromString("wb");
             int result = SaveBmpRW(surface, RWFromFile(file, wb), 1);
             Utf8.Free(wb);
             return result;

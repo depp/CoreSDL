@@ -6,7 +6,7 @@ namespace SDL2
 {
     public static unsafe class Utf8
     {
-        public static byte* FromString(string str)
+        public static byte* AllocateFromString(string str)
         {
             int maxByteCount = Encoding.UTF8.GetMaxByteCount(str.Length);
             byte* bytePtr = (byte*)Marshal.AllocHGlobal(maxByteCount);
