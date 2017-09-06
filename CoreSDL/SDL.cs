@@ -14,6 +14,9 @@ namespace SDL2
         private const string LibraryName = "libSDL2-2.0.so";
 #elif PLATFORM_MACOS
         private const string LibraryName = "libdylib";
+#else
+        private const string LibraryName = " ";
+#error Unknown Platform
 #endif
 
         public static class Hints

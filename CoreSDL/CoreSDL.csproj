@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Platforms>x64</Platforms>
+    <RootNamespace>SDL2</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Jeremie St-Amand</Authors>
+    <Company />
+    <Description>Efficient, high quality C# SDL bindings for .Net Core.</Description>
+    <PackageProjectUrl>https://github.com/jesta88/CoreSDL</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jesta88/CoreSDL</RepositoryUrl>
+    <PackageTags>SDL</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;RELEASE;NETCOREAPP2_0;PLATFORM_WINDOWS</DefineConstants>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP2_0;PLATFORM_WINDOWS</DefineConstants>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+
+</Project>
