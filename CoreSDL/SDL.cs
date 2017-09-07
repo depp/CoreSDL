@@ -3190,14 +3190,40 @@ namespace SDL2
         //
         // SDL_vulkan.h
         //
-        public struct VkInstance
+        public struct VkInstance : IEquatable<VkInstance>
         {
             public IntPtr Handle;
+
+            public static readonly VkInstance Null;
+
+            public bool Equals(VkInstance other) => Handle == other.Handle;
+            public override bool Equals(object obj) => obj is VkInstance && this == (VkInstance)obj;
+            public override int GetHashCode() => Handle.GetHashCode();
+            public override string ToString() => Handle.ToString();
+
+            public static bool operator ==(VkInstance left, VkInstance right) => left.Equals(right);
+            public static bool operator !=(VkInstance left, VkInstance right) => !left.Equals(right);
+
+            public static implicit operator IntPtr(VkInstance instance) => instance.Handle;
+            public static implicit operator VkInstance(IntPtr handle) => new VkInstance() { Handle = handle };
         }
 
-        public struct VkSurfaceKHR
+        public struct VkSurfaceKHR : IEquatable<VkSurfaceKHR>
         {
             public ulong Handle;
+
+            public static readonly VkSurfaceKHR Null;
+
+            public bool Equals(VkSurfaceKHR other) => Handle == other.Handle;
+            public override bool Equals(object obj) => obj is VkSurfaceKHR && this == (VkSurfaceKHR)obj;
+            public override int GetHashCode() => Handle.GetHashCode();
+            public override string ToString() => Handle.ToString();
+
+            public static bool operator ==(VkSurfaceKHR left, VkSurfaceKHR right) => left.Equals(right);
+            public static bool operator !=(VkSurfaceKHR left, VkSurfaceKHR right) => !left.Equals(right);
+
+            public static implicit operator ulong(VkSurfaceKHR instance) => instance.Handle;
+            public static implicit operator VkSurfaceKHR(ulong handle) => new VkSurfaceKHR() { Handle = handle };
         }
 
         [DllImport(LibraryName, EntryPoint = "SDL_Vulkan_LoadLibrary")]

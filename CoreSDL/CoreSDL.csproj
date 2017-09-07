@@ -25,4 +25,8 @@
     <OutputPath>bin\x64\Debug\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NuGet.CommandLine" Version="4.3.0" />
+  </ItemGroup>
+
 </Project>
