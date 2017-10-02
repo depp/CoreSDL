@@ -29,4 +29,17 @@
     <PackageReference Include="NuGet.CommandLine" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="CoreSDL.dll.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="CoreSDL.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CoreSDL.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
