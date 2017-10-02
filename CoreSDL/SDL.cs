@@ -2293,7 +2293,7 @@ namespace SDL2
             public IntPtr Handle;
         }
 
-        [DllImport(LibraryName, EntryPoint = "SDL_RwFromFile")]
+        [DllImport(LibraryName, EntryPoint = "SDL_RWFromFile")]
         public static extern RWops RWFromFile(byte* file, byte* mode);
 
         //
