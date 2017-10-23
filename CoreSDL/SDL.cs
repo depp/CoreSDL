@@ -3176,6 +3176,110 @@ namespace SDL2
         [DllImport("SDL2", EntryPoint = "SDL_DisableScreenSaver")]
         public static extern void DisableScreenSaver();
 
+        public enum GLAttribute
+        {
+            RedSize,
+            GreenSize,
+            BlueSize,
+            AlphaSize,
+            BufferSize,
+            DoubleBuffer,
+            DepthSize,
+            StencilSize,
+            AccumRedSize,
+            AccumGreenSize,
+            AccumBlueSize,
+            AccumAlphaSize,
+            Stereo,
+            MultisampleBuffers,
+            MultisampleSamples,
+            AcceleratedVisual,
+            RetainedBacking,
+            ContextMajorVersion,
+            ContextMinorVersion,
+            ContextEGL,
+            ContextFlags,
+            ContextProfileMask,
+            ShareWithCurrentContext,
+            FramebufferSRGBCapable,
+            ContextReleaseBehavior,
+            ContextResetNotification,
+            ContextNoError
+        }
+
+        public enum GLProfile
+        {
+            ContextProfileCore           = 0x0001,
+            ContextProfileCompatibility  = 0x0002,
+            ContextProfileES             = 0x0004 /**< GLX_CONTEXT_ES2_PROFILE_BIT_EXT */
+        }
+
+        public enum GLContextFlag
+        {
+            DebugFlag             = 0x0001,
+            ForwardCompatibleFlag = 0x0002,
+            RobustAccessFlag      = 0x0004,
+            ResetIsolationFlag    = 0x0008
+        }
+
+        public enum GLContextReleaseFlag
+        {
+            None   = 0x0000,
+            Flush  = 0x0001
+        }
+
+        public enum GLContextResetNotification
+        {
+            NoNotification = 0x0000,
+            LostContext    = 0x0001
+        }
+
+        public struct GLContext
+        {
+            public IntPtr Handle;
+
+            public GLContext(IntPtr handle)
+            {
+                Handle = handle;
+            }
+
+            public static implicit operator IntPtr(GLContext context) => context.Handle;
+            public static implicit operator GLContext(IntPtr handle) => new GLContext(handle);
+        }
+
+        [DllImport("SDL2", EntryPoint = "SDL_GL_LoadLibrary")]
+        public static extern int GL_LoadLibrary(byte* path);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_GetProcAddress")]
+        public static extern void* GL_GetProcAddress(byte* proc);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_UnloadLibrary")]
+        public static extern void GL_UnloadLibrary();
+        [DllImport("SDL2", EntryPoint = "SDL_GL_ExtensionSupported")]
+        public static extern bool GL_ExtensionSupported(byte* extension);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_ResetAttributes")]
+        public static extern void GL_ResetAttributes();
+        [DllImport("SDL2", EntryPoint = "SDL_GL_SetAttribute")]
+        public static extern int GL_SetAttribute(GLAttribute attr, int value);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_GetAttribute")]
+        public static extern int GL_GetAttribute(GLAttribute attr, out int value);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_CreateContext")]
+        public static extern GLContext GL_CreateContext(Window window);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_MakeCurrent")]
+        public static extern int GL_MakeCurrent(Window window, GLContext context);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_GetCurrentWindow")]
+        public static extern void* GL_GetCurrentWindow();
+        [DllImport("SDL2", EntryPoint = "SDL_GL_GetCurrentContext")]
+        public static extern void* GL_GetCurrentContext();
+        [DllImport("SDL2", EntryPoint = "SDL_GL_GetDrawableSize")]
+        public static extern void GL_GetDrawableSize(Window window, out int w, out int h);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_SetSwapInterval")]
+        public static extern int GL_SetSwapInterval(int interval);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_GetSwapInterval")]
+        public static extern int GL_GetSwapInterval();
+        [DllImport("SDL2", EntryPoint = "SDL_GL_SwapWindow")]
+        public static extern void GL_SwapWindow(Window window);
+        [DllImport("SDL2", EntryPoint = "SDL_GL_DeleteContext")]
+        public static extern void GL_DeleteContext(GLContext context);
+
         //
         // SDL_vulkan.h
         //
